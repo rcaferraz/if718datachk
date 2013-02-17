@@ -1,0 +1,31 @@
+@(computadores: List[Computador], computadorForm: Form[Computador])
+
+@import helper._
+
+@main("Lista de Computadores") {
+    
+    <h1>@computadores.size() computador(es)</h1>
+    
+    <ul>
+        @for(computador <- computadores) {
+            <li>
+                @computador.barcode
+                
+                @form(routes.Application.deleteComputador(computador.id)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+    
+    <h2>Adicionar novo computador</h2>
+    
+    @form(routes.Application.newComputador()) {
+        
+        @inputText(computadorForm("barcode")) 
+        
+        <input type="submit" value="Create">
+        
+    }
+    
+}
