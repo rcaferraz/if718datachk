@@ -2,9 +2,14 @@ package models;
 
 import java.util.*;
 
+import play.data.validation.Constraints.*;
+
 public class Computador {
 
 	public Long id;
+	
+	@Required
+	public String barcode;
 	public String status;
 
 	public static List<Computador> all() {
